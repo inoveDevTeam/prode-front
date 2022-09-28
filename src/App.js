@@ -16,7 +16,7 @@ function App() {
   const [state, dispatch] = useReducer(appReducer, initialState);
   //const [habilitado, setHabilitado] = useState(true);
   return (
-    <AppContext.Provider value={{ state, dispatch }}>\
+    <AppContext.Provider value={{ state, dispatch }}>
       {/* <User /> */} 
       <Routes>
         <Route path='/' element={<PantallaPartidos />} />

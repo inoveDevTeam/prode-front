@@ -1,0 +1,77 @@
+$base-footer: #00162B;
+$borde-footer: #d90a40;
+$color-fuente: #fff;
+
+.cont-cardPartido{
+  background-color: $base-footer;
+  color: #fff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  padding: 5px;
+  max-width: 350px;
+}
+
+.cont-nomEquipos{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  min-height: 40px;
+}
+
+.equipo{
+  width: 50%;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.equipo p{
+  font-weight: 600;
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  letter-spacing: 0.5px;
+}
+
+.cont-datosPartido{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 30px;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+}
+
+.cont-dato{
+  width: 75%;
+}
+
+.cont-estado{
+  width: 25%;
+}
+
+.cont-resul-apu{
+  width: 100%;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #00162B 90.19%), url("../img/red-bull-wololo-iii-blur.png") ;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: normal, darken;
+}
+
+// enero
+// febrero
+// marzo
+// abril
+// mayo
+// junio
+// julio
+// agostro
+// septiembre
+// octubre
+// noviembre
+// diciembre
