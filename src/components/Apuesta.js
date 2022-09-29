@@ -4,7 +4,7 @@ import "../assets/styles/apuesta.scss"
 import { useState } from "react"
 import Editar from "../assets/img/Editar.svg"
 import Confirmar from "../assets/img/Confirmar.svg"
-import toast from "react-hot-toast"
+//import toast from "react-hot-toast"
 
 function Apuesta() {
   const [editar, setEditar] = useState(false)
@@ -14,13 +14,13 @@ function Apuesta() {
   const handleChange = (e) => {
     setValorApuesta((state) => ({
       ...state,
-      [e.target.name]: e.target.value,
+      [e.target.name]: Math.round(e.target.value),
     }))
   }
 
   const handleClick = (e) => {
     console.log(e)
-    if(e.target.name == "confirmar"){
+    if (e.target.name === "confirmar") {
       console.log("confirmando apuesta")
     }
     setEditar(!editar)
@@ -34,12 +34,12 @@ function Apuesta() {
         <div className="cont-apuesta">
           <Input
             value={valorApuesta.apuestaEq1}
-            onChange={(e)=>{
+            onChange={(e) => {
               handleChange(e)
             }}
             name={"apuestaEq1"}
             editar={editar}
-            readOnly={editar?false:true}
+            readOnly={editar ? false : true}
           />
           <Separador />
           <Input
@@ -47,7 +47,7 @@ function Apuesta() {
             onChange={handleChange}
             name={"apuestaEq2"}
             editar={editar}
-            readOnly={editar?false:true}
+            readOnly={editar ? false : true}
           />
         </div>
         <div className="edit">

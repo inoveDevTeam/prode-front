@@ -7,16 +7,16 @@ function Input({ value, onChange, name, editar, readOnly }) {
         ?
         <input
           type="text"
-          value={value == "" ? "?" : value}
+          value={value === "" ? "?" : value}
           readOnly
         />
         :
         <input
-          type={value == "" && !editar ? "text" : "number"}
+          type={value === "" && !editar ? "text" : "number"}
           name={name}
           min={0}
           max={99}
-          value={value == "" ? "?" : value}
+          value={value === "" ? "?" : value}
           onChange={onChange}
         />
       }

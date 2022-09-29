@@ -17,7 +17,7 @@ function App() {
   //const [habilitado, setHabilitado] = useState(true);
   return (
     <AppContext.Provider value={{ state, dispatch }}>
-      {/* <User /> */} 
+      {/* <User /> */}
       <Routes>
         <Route path='/' element={<PantallaPartidos />} />
         <Route path='/ranking' element={<PantallaRanking />} />

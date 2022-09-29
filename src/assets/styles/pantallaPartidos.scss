@@ -1,8 +1,9 @@
 .contpp-partidos{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 5% 0;
+  min-height: 80vh;
 }
 
 
