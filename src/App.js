@@ -4,14 +4,13 @@ import PantallaRanking from './views/PantallaRanking'
 import PantallaDevs from './views/PantallaDevs'
 import NavBar from './components/NavBar';
 import { appReducer, initialState, AppContext } from "./appInfo";
-import './App.css';
 import './App.scss';
 import {  useReducer } from "react";
-
 import {
   Route,
   Routes,
 } from "react-router-dom";
+
 function App() {
   const [state, dispatch] = useReducer(appReducer, initialState);
   //const [habilitado, setHabilitado] = useState(true);
