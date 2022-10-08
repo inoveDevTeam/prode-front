@@ -1,11 +1,15 @@
 import '../assets/styles/logIn.scss'
 import logoInove from '../assets/img/iconoinove.png'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { AppContext } from '../appInfo';
 
 export default function LogIn() {
   const navigate = useNavigate();
   const [validadorInicio, setValidadorInicio] = useState({ user: '', password: '' })
+  const { state, dispatch } = useContext(AppContext);
+  const { user, userHabilitado } = state;
 
   const handleChange = (e) => {
     setValidadorInicio((state) => ({
@@ -14,17 +18,33 @@ export default function LogIn() {
     }))
   }
 
+  const postUser = () => {
+    axios.post(process.env.REACT_APP_LOGIN_URL, {
+      username: validadorInicio.user,
+      password: validadorInicio.password
+    })
+      .then((res) => {
+        dispatch({type: "setUser", payload: res.data });
+        dispatch({type: "setUserHabilitado", payload: true });
+        localStorage.setItem('userAgeRedBull', JSON.stringify(user))
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   const handleSubmit = (e)=>{
-    console.log(e)
-    console.log(e.target.name)
     if(e.target.name === 'iniciarSesion'){
-      console.log("Iniciandop secion")
+      postUser()
       navigate("/")
     }
     if(e.target.name === 'crearCuenta'){
       console.log("crenadoCuenta")
     }
   }
+
+  console.log(user)
+  console.log(userHabilitado)
 
   return (
     <div className='contPP'>
@@ -61,13 +81,14 @@ export default function LogIn() {
             name='iniciarSesion'
             onClick={handleSubmit}
           />
+          {/* 
           <input
             type="submit"
             className='inputInicio btn-crearCu'
             value="Crear Cuenta"
             name='crearCuenta'
             onClick={handleSubmit}
-          />
+          /> */}
         </div>
       </div>
     </div>

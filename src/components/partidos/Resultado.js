@@ -1,6 +1,6 @@
 import Input from "./Input"
-import Separador from "./Separador"
-import '../assets/styles/resultado.scss'
+import Separador from "../Separador"
+import '../../assets/styles/partidos/resultado.scss'
 
 function Resultado(){
   return(

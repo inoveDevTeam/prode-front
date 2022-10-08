@@ -1,4 +1,4 @@
-import '../assets/styles/input.scss'
+import '../../assets/styles/partidos/input.scss'
 function Input({ value, onChange, name, editar, readOnly }) {
 
   return (

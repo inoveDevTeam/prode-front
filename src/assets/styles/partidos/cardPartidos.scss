@@ -24,12 +24,11 @@ $color-fuente: #fff;
 .equipo{
   width: 50%;
   text-align: center;
-  font-size: 1rem;
 }
 
 .equipo p{
   font-weight: 600;
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  font-size: clamp(1.3rem, 2.5vw, 1.5rem);
   letter-spacing: 0.5px;
 }
 
@@ -40,7 +39,7 @@ $color-fuente: #fff;
   align-items: flex-start;
   width: 100%;
   min-height: 30px;
-  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  font-size: clamp(0.8rem, 2.5vw, 0.85rem);
 }
 
 .cont-dato{
@@ -57,7 +56,7 @@ $color-fuente: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #00162B 90.19%), url("../img/red-bull-wololo-iii-blur.png") ;
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #00162B 90.19%), url("../../img/red-bull-wololo-iii-blur.png") ;
   background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: normal, darken;

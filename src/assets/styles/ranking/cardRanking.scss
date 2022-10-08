@@ -6,7 +6,7 @@ $oro: #FFC600;
 $plata: #C0C0C0;
 $bronce: #945D41;
 
-.cont-ranking{
+.cont-ranking {
   background-color: $fondo-ranking;
   width: 100%;
   display: flex;
@@ -17,20 +17,16 @@ $bronce: #945D41;
   height: 50px;
   border-radius: 4px;
   max-width: 500px;
-  margin: 4px 0;
+  margin: 4px auto;
 }
 
-.cont-posicion{
-  background-color: $normal;
-  width: 20%;
-  height: 60%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
+.cont-ranking p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
-.oro{
+/* .oro{
   background-color: $oro;
 }
 
@@ -45,8 +41,8 @@ $bronce: #945D41;
 .normal{
   background-color: $normal;
 }
-
-.cont-user{
+ */
+.cont-user {
   background-color: transparent;
   width: 50%;
   height: 60%;
@@ -55,7 +51,7 @@ $bronce: #945D41;
   justify-content: center;
 }
 
-.cont-puntos{
+/* .cont-puntos{
   background-color: $fondo-puntuacion;
   width: 20%;
   height: 60%;
@@ -63,4 +59,4 @@ $bronce: #945D41;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-}
+} */

@@ -1,11 +1,11 @@
-import LogIn from './components/LogIn';
+import LogIn from './views/LogIn';
 import PantallaPartidos from './views/PantallaPartidos'
 import PantallaRanking from './views/PantallaRanking'
 import PantallaDevs from './views/PantallaDevs'
 import NavBar from './components/NavBar';
 import { appReducer, initialState, AppContext } from "./appInfo";
 import './App.scss';
-import {  useReducer } from "react";
+import { useState, useReducer, useEffect } from "react";
 import {
   Route,
   Routes,
@@ -13,17 +13,43 @@ import {
 
 function App() {
   const [state, dispatch] = useReducer(appReducer, initialState);
-  //const [habilitado, setHabilitado] = useState(true);
+  const { userHabilitado, user, mobile } = state;
+  const [items, setItems] = useState([])
+
+  useEffect(() => {
+    currentUser();
+    isMobile();
+  }, [])
+
+  const currentUser = () => {
+    const item = JSON.parse(localStorage.getItem('userAgeRedBull'));
+    if (item) {
+      dispatch({ type: "setUserHabilitado", payload: item })
+    }
+  }
+
+  const isMobile = () => {
+    if (navigator.userAgent.match(/Android/i)
+      || navigator.userAgent.match(/webOS/i)
+      || navigator.userAgent.match(/iPhone/i)
+      || navigator.userAgent.match(/iPad/i)
+      || navigator.userAgent.match(/iPod/i)
+      || navigator.userAgent.match(/BlackBerry/i)
+      || navigator.userAgent.match(/Windows Phone/i)){
+        dispatch({type: "setMobile", payload: true})
+      }
+  }
+  console.log('es Mobile', mobile)
+
   return (
     <AppContext.Provider value={{ state, dispatch }}>
-      {/* <User /> */}
       <Routes>
         <Route path='/' element={<PantallaPartidos />} />
         <Route path='/ranking' element={<PantallaRanking />} />
         <Route path='/devs' element={<PantallaDevs />} />
-        <Route path='/login' element={<LogIn />} />
+        <Route path='/logIn' element={<LogIn />} />
       </Routes>
-      <NavBar />
+      {/* <NavBar /> */}
     </AppContext.Provider>
   );
 }

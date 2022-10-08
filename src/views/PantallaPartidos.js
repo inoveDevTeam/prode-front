@@ -1,35 +1,35 @@
 import Banner from "../components/Banner"
-import CardPartidos from "../components/CardPartidos"
+import CardPartidos from "../components/partidos/CardPartidos"
 import { Toaster } from 'react-hot-toast';
-import '../assets/styles/pantallaPartidos.scss'
+import '../assets/styles/partidos/pantallaPartidos.scss'
 import axios from "axios";
 import { useEffect } from "react";
+import NavBar from "../components/NavBar";
+import Structure from "../components/Structure";
 
 function PantallaPartidos() {
 
-  useEffect(()=>{
-    postUser();
+  useEffect(() => {
+    // postUser();
   }, [])
 
   //https://github.com/InoveAlumnos/ecommerce_backend_python/blob/main/marvel/marvel/settings.py
 
-  const postUser = ()=>{
-    axios.post(process.env.REACT_APP_LOGIN_URL,{
-      headers: {
-        username: 'santiago',
-        password: 'prode1234'
-      },
+  /* const postUser = () => {
+    axios.post(process.env.REACT_APP_LOGIN_URL, {
+      username: 'santiago',
+      password: 'prode1234'
     })
-    .then((res)=>{
-      console.log(res)
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
-  }
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  } */
 
   return (
-    <>
+    <Structure>
       <div className="containerPP">
         <Toaster />
         <section className="contpp-banner">
@@ -44,7 +44,7 @@ function PantallaPartidos() {
           </article>
         </section>
       </div>
-    </>
+    </Structure>
   )
 }
 

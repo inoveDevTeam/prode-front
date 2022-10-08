@@ -5,7 +5,9 @@ export const AppContext = createContext();
 export const initialState = {
   partidos: [],
   ranking: [],
-  user: {}
+  user: {},
+  userHabilitado: false,
+  mobile: false,
 }
 
 export const appReducer = (state, action)=>{
@@ -22,10 +24,22 @@ export const appReducer = (state, action)=>{
         ranking: action.payload,
       }
     }
-    case "getUser":{
+    case "setUser":{
       return {
         ...state,
         user: action.payload,
+      }
+    }
+    case "setUserHabilitado":{
+      return {
+        ...state,
+        userHabilitado: action.payload,
+      }
+    }
+    case "setMobile":{
+      return {
+        ...state,
+        mobile: action.payload,
       }
     }
     default:

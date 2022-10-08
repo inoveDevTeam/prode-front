@@ -1,8 +1,7 @@
-import Apuesta from "./Apuesta"
-import Input from "./Input"
-import Resultado from "./Resultado"
+import Apuesta from "../partidos/Apuesta"
+import Resultado from "../partidos/Resultado"
 
-import '../assets/styles/cardPartidos.scss'
+import '../../assets/styles/partidos/cardPartidos.scss'
 
 function CardPartidos() {
   return (

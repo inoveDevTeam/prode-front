@@ -1,15 +1,18 @@
 import Input from "./Input"
-import Separador from "./Separador"
-import "../assets/styles/apuesta.scss"
-import { useState } from "react"
-import Editar from "../assets/img/Editar.svg"
-import Confirmar from "../assets/img/Confirmar.svg"
+import Separador from "../Separador"
+import "../../assets/styles/partidos/apuesta.scss"
+import { useEffect, useState } from "react"
+import Editar from "../../assets/img/Editar.svg"
+import Confirmar from "../../assets/img/Confirmar.svg"
+import { useContext } from "react";
+import { AppContext } from "../../appInfo"
 //import toast from "react-hot-toast"
 
 function Apuesta() {
   const [editar, setEditar] = useState(false)
   const [valorApuesta, setValorApuesta] = useState({ apuestaEq1: '0', apuestaEq2: '0' })
-
+  const { state } = useContext(AppContext);
+  const { userHabilitado } = state;
 
   const handleChange = (e) => {
     setValorApuesta((state) => ({
@@ -31,7 +34,7 @@ function Apuesta() {
   return (
     <>
       <div className="apuesta">
-        <div className="cont-apuesta">
+        <div className={userHabilitado ?"cont-apuesta" : "cont-apuesta no-edit"}>
           <Input
             value={valorApuesta.apuestaEq1}
             onChange={(e) => {
@@ -50,26 +53,31 @@ function Apuesta() {
             readOnly={editar ? false : true}
           />
         </div>
-        <div className="edit">
-          {editar
-            ?
-            <button
-              className="btn-apuesta btn-confirmar"
-              name="confirmar"
-              onClick={handleClick}
-            >
-              <img src={Confirmar} name="confirmar" alt="confirmar" />
-            </button>
-            :
-            <button
-              className="btn-apuesta btn-editar"
-              name="editar"
-              onClick={handleClick}
-            >
-              <img src={Editar} alt="edit" />
-            </button>
-          }
-        </div>
+        {userHabilitado
+          ?
+          <div className="edit">
+            {editar
+              ?
+              <button
+                className="btn-apuesta btn-confirmar"
+                name="confirmar"
+                onClick={handleClick}
+              >
+                <img src={Confirmar} name="confirmar" alt="confirmar" />
+              </button>
+              :
+              <button
+                className="btn-apuesta btn-editar"
+                name="editar"
+                onClick={handleClick}
+              >
+                <img src={Editar} alt="edit" />
+              </button>
+            }
+
+          </div>
+        : null  
+      }
       </div>
     </>
   )
