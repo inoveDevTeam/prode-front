@@ -18,7 +18,7 @@ export const appReducer = (state, action)=>{
         partidos: action.payload,
       }
     }
-    case "getRanking":{
+    case "setRanking":{
       return {
         ...state,
         ranking: action.payload,

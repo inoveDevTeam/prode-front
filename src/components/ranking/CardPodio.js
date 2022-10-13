@@ -1,7 +1,7 @@
 import '../../assets/styles/ranking/cardPodio.scss'
 import User from '../../assets/img/user 1.svg'
 import Puntos from './Puntos'
-function CardPodio({ podio, posicion, puntos }) {
+function CardPodio({ podio, posicion, puntos, nombre}) {
   return (
     <>
       <div className={`cont-ranking-podio p-${podio}`} >
@@ -9,7 +9,7 @@ function CardPodio({ podio, posicion, puntos }) {
         <div className='cont-datos-podio'>
           <div className='cont-user'>
             <img src={User} alt="user" />
-            <p>Nombre podio</p>
+            <p>{nombre}</p>
           </div>
           <Puntos valor={puntos} color={''} className={'puntos'} />
         </div>

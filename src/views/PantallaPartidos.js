@@ -3,30 +3,29 @@ import CardPartidos from "../components/partidos/CardPartidos"
 import { Toaster } from 'react-hot-toast';
 import '../assets/styles/partidos/pantallaPartidos.scss'
 import axios from "axios";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import NavBar from "../components/NavBar";
 import Structure from "../components/Structure";
+import { AppContext } from "../appInfo";
+import { instancia } from "../components/interceptors";
 
 function PantallaPartidos() {
+  const { state } = useContext(AppContext);
+  const { user } = state;
 
   useEffect(() => {
-    // postUser();
+    getPartidos()
   }, [])
 
-  //https://github.com/InoveAlumnos/ecommerce_backend_python/blob/main/marvel/marvel/settings.py
-
-  /* const postUser = () => {
-    axios.post(process.env.REACT_APP_LOGIN_URL, {
-      username: 'santiago',
-      password: 'prode1234'
-    })
+  const getPartidos = () => {
+    instancia.get(process.env.REACT_APP_PARTIDOS_URL)
       .then((res) => {
         console.log(res)
       })
       .catch((err) => {
         console.log(err)
       })
-  } */
+  }
 
   return (
     <Structure>

@@ -24,7 +24,8 @@ function App() {
   const currentUser = () => {
     const item = JSON.parse(localStorage.getItem('userAgeRedBull'));
     if (item) {
-      dispatch({ type: "setUserHabilitado", payload: item })
+      dispatch({type: "setUser", payload: item})
+      dispatch({ type: "setUserHabilitado", payload: true })
     }
   }
 
@@ -39,7 +40,6 @@ function App() {
         dispatch({type: "setMobile", payload: true})
       }
   }
-  console.log('es Mobile', mobile)
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>

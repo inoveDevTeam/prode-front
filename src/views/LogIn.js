@@ -24,9 +24,10 @@ export default function LogIn() {
       password: validadorInicio.password
     })
       .then((res) => {
+        console.log(res)
         dispatch({type: "setUser", payload: res.data });
         dispatch({type: "setUserHabilitado", payload: true });
-        localStorage.setItem('userAgeRedBull', JSON.stringify(user))
+        localStorage.setItem('userAgeRedBull', JSON.stringify(res.data))
       })
       .catch((err) => {
         console.log(err)
@@ -42,9 +43,6 @@ export default function LogIn() {
       console.log("crenadoCuenta")
     }
   }
-
-  console.log(user)
-  console.log(userHabilitado)
 
   return (
     <div className='contPP'>

@@ -15,10 +15,12 @@ function Apuesta() {
   const { userHabilitado } = state;
 
   const handleChange = (e) => {
-    setValorApuesta((state) => ({
-      ...state,
-      [e.target.name]: Math.round(e.target.value),
-    }))
+    if (e.target.value.length <= 2) {
+      setValorApuesta((state) => ({
+        ...state,
+        [e.target.name]: Math.round(e.target.value),
+      }))
+    }
   }
 
   const handleClick = (e) => {
@@ -34,7 +36,7 @@ function Apuesta() {
   return (
     <>
       <div className="apuesta">
-        <div className={userHabilitado ?"cont-apuesta" : "cont-apuesta no-edit"}>
+        <div className={userHabilitado ? "cont-apuesta" : "cont-apuesta no-edit"}>
           <Input
             value={valorApuesta.apuestaEq1}
             onChange={(e) => {
@@ -76,8 +78,8 @@ function Apuesta() {
             }
 
           </div>
-        : null  
-      }
+          : null
+        }
       </div>
     </>
   )

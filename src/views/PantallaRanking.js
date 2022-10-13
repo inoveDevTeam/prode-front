@@ -1,18 +1,43 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AppContext } from "../appInfo"
 import Banner from "../components/Banner";
 import '../assets/styles/ranking/pantallaRanking.scss'
 import CardRanking from "../components/ranking/CardRanking";
 import Structure from "../components/Structure";
 import PuntuacionUser from "../components/ranking/PuntuacionUser";
-import { Divider } from "@mui/material";
-import Separador from "../components/Separador";
 import CardPodio from "../components/ranking/CardPodio";
-
+import { instancia } from "../components/interceptors";
 
 function PantallaRanking() {
-  const { state } = useContext(AppContext)
+  const [arrRankingGlobalPodio, setArrRankingGlobalPodio] = useState([])
+  const [arrRankingGlobal, setArrRankingGlobal] = useState([])
+  const { state, dispatch } = useContext(AppContext)
   const { ranking } = state;
+
+  useEffect(() => {
+    getRanking()
+  }, [])
+
+  useEffect(() => {
+    if (ranking.ranking) {
+      setArrRankingGlobalPodio(ranking.ranking.slice(0, 2))
+      setArrRankingGlobal(ranking.ranking.slice(3))
+    }
+  }, [ranking])
+
+  const posiciones = {
+    1: 'oro',
+    2: 'plata',
+    3: 'bronce'
+  }
+
+  const getRanking = () => {
+    instancia.get(process.env.REACT_APP_RANKING_URL)
+      .then(res => {
+        dispatch({ type: "setRanking", payload: res.data })
+      })
+      .catch(err => console.log(err))
+  }
 
   return (
     <Structure>
@@ -31,28 +56,23 @@ function PantallaRanking() {
             </div>
             <div className="cont-card-ranking">
               <div className="cont-podio">
-                <CardPodio
-                  podio={'oro'}
-                  posicion={1}
-                  puntos={10}
-                />
-                <CardPodio
-                  podio={'plata'}
-                  posicion={2}
-                  puntos={9}
-                />
-                <CardPodio
-                  podio={'bronce'}
-                  posicion={3}
-                  puntos={8}
-                />
+                {arrRankingGlobalPodio.map((rank) => (
+                  <CardPodio
+                    nombre={rank.first_name + ' ' + rank.last_name}
+                    podio={posiciones[rank.posicion]}
+                    posicion={rank.posicion}
+                    puntos={rank.puntaje_total}
+                  />
+                ))}
               </div>
-              <CardRanking />
-              <CardRanking />
-              <CardRanking />
-              <CardRanking />
-              <CardRanking />
-
+              {arrRankingGlobal.map((rank) => 
+                    <CardRanking
+                      nombre={rank.first_name + ' ' + rank.last_name}
+                      podio={posiciones[rank.posicion]}
+                      posicion={rank.posicion}
+                      puntos={rank.puntaje_total}
+                    />
+              )}
             </div>
           </article>
         </section>

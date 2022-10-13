@@ -3,16 +3,16 @@ import User from '../../assets/img/user 1.svg'
 import Puntos from './Puntos'
 
 
-function CardRanking() {
+function CardRanking({ posicion, puntos, nombre}) {
   return (
     <>
     <div className="cont-ranking" >
-      <Puntos color={'normal'}/>
+      <Puntos valor={puntos} color={'normal'}/>
       <div className='cont-user'>
         <img src={User} alt="user"/>
-        <p>Nombre user</p>
+        <p>{nombre}</p>
       </div>
-      <Puntos color={''}/>
+      <Puntos valor={posicion} color={''}/>
     </div>
 
     </>
