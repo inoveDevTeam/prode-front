@@ -7,6 +7,7 @@ function Input({ value, onChange, name, editar, readOnly }) {
         ?
         <input
           type="text"
+          className='no-editable'
           value={value === "" ? "?" : value}
           readOnly
         />
@@ -20,7 +21,6 @@ function Input({ value, onChange, name, editar, readOnly }) {
           onChange={onChange}
         />
       }
-
     </div>
   )
 }

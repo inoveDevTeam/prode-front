@@ -2,30 +2,35 @@ import Banner from "../components/Banner"
 import CardPartidos from "../components/partidos/CardPartidos"
 import { Toaster } from 'react-hot-toast';
 import '../assets/styles/partidos/pantallaPartidos.scss'
-import axios from "axios";
 import { useContext, useEffect } from "react";
-import NavBar from "../components/NavBar";
 import Structure from "../components/Structure";
 import { AppContext } from "../appInfo";
 import { instancia } from "../components/interceptors";
 
 function PantallaPartidos() {
-  const { state } = useContext(AppContext);
-  const { user } = state;
+  const { state, dispatch } = useContext(AppContext);
+  const { user, partidos } = state;
 
   useEffect(() => {
     getPartidos()
   }, [])
 
+  useEffect(() => {
+    // console.log("reload")
+  }, [partidos])
+
   const getPartidos = () => {
     instancia.get(process.env.REACT_APP_PARTIDOS_URL)
       .then((res) => {
-        console.log(res)
+        // console.log(res)
+        dispatch({ type: "setPartidos", payload: res.data.data })
       })
       .catch((err) => {
         console.log(err)
       })
   }
+
+  // console.log("PARTIDOS", partidos)
 
   return (
     <Structure>
@@ -39,7 +44,13 @@ function PantallaPartidos() {
             <h1>Partidos</h1>
           </article>
           <article className="cont-partidos">
-            <CardPartidos />
+            {partidos.length > 0
+              ?
+              partidos?.map(partido => (
+                <CardPartidos infoPartido={partido} />
+              ))
+              : <p>No hay partidos</p>
+            }
           </article>
         </section>
       </div>

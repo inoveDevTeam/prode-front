@@ -12,7 +12,7 @@ export const initialState = {
 
 export const appReducer = (state, action)=>{
   switch(action.type){
-    case "getPartidos":{
+    case "setPartidos":{
       return {
         ...state,
         partidos: action.payload,

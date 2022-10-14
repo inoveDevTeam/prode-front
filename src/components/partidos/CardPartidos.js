@@ -3,32 +3,49 @@ import Resultado from "../partidos/Resultado"
 
 import '../../assets/styles/partidos/cardPartidos.scss'
 
-function CardPartidos() {
+function CardPartidos({ infoPartido }) {
+
+  const tiposEstados = {
+    0: 'no jugado',
+    1: 'en juego',
+    2: 'finalizado'
+  }
+
+  const tiposEstadosCss = {
+    0: 'no-jugado',
+    1: 'en-juego',
+    2: 'finalizado'
+  }
+
+  console.log("INFO PARTIDO", infoPartido)
   return (
     <div className="cont-cardPartido">
       <div className="cont-nomEquipos">
         <div className="equipo">
-          <p>Equipo 1</p>
+          <p>{infoPartido.equipo_1_name}</p>
         </div>
         <div className="equipo">
-          <p>Equipo 2</p>
+          <p>{infoPartido.equipo_2_name}</p>
         </div>
       </div>
       <div className="cont-datosPartido">
         <div className="cont-dato">
           <div className="cont-date">
-            <p>Mar 15, septiembre 2022 18:30</p>
+            <p>{infoPartido.fecha}</p>
           </div>
           <div className="cont-obs">
-            Observaciones
+            {infoPartido.descripcion}
           </div>
         </div>
-        <div className="cont-estado">
-          <p>no jugado</p>
+        <div className={`cont-estado ${tiposEstadosCss[infoPartido.estado]}`}>
+          <p>{tiposEstados[infoPartido.estado]}</p>
         </div>
       </div>
       <div className="cont-resul-apu">
-        <Apuesta />
+        <Apuesta
+          editable={infoPartido.estado == 0 ? true : false}
+          infoPartido={infoPartido}
+        />
         <Resultado />
         {/* <div className="cont-puntosObt">
           <p>Puntos Obtenidos</p>

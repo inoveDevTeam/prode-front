@@ -6,13 +6,17 @@ import Editar from "../../assets/img/Editar.svg"
 import Confirmar from "../../assets/img/Confirmar.svg"
 import { useContext } from "react";
 import { AppContext } from "../../appInfo"
+import { instancia } from "../interceptors"
 //import toast from "react-hot-toast"
 
-function Apuesta() {
+function Apuesta({ editable, infoPartido }) {
   const [editar, setEditar] = useState(false)
-  const [valorApuesta, setValorApuesta] = useState({ apuestaEq1: '0', apuestaEq2: '0' })
+  const [valorApuesta, setValorApuesta] = useState({ apuestaEq1: '', apuestaEq2: '' })
   const { state } = useContext(AppContext);
   const { userHabilitado } = state;
+
+  useEffect(()=>{
+  })
 
   const handleChange = (e) => {
     if (e.target.value.length <= 2) {
@@ -24,14 +28,21 @@ function Apuesta() {
   }
 
   const handleClick = (e) => {
-    console.log(e)
     if (e.target.name === "confirmar") {
-      console.log("confirmando apuesta")
+      instancia.post(process.env.REACT_APP_PARTIDOS_URL, {
+        headers: {
+          'partido_id': infoPartido.partido_id,
+          'pronostico_equipo_1': valorApuesta.apuestaEq1,
+          'pronostico_equipo_2': valorApuesta.apuestaEq2,
+        }
+      },
+      )
+    }
+    if (e.target.name === "editar" && !editable) {
+      alert('no puede realizar la apuesta porque el partido ya comenzo')
     }
     setEditar(!editar)
   }
-
-  console.log("valor Apuesta", valorApuesta)
 
   return (
     <>
@@ -58,7 +69,7 @@ function Apuesta() {
         {userHabilitado
           ?
           <div className="edit">
-            {editar
+            {editar && editable
               ?
               <button
                 className="btn-apuesta btn-confirmar"
@@ -73,7 +84,7 @@ function Apuesta() {
                 name="editar"
                 onClick={handleClick}
               >
-                <img src={Editar} alt="edit" />
+                <img src={Editar} name="editar" alt="edit" />
               </button>
             }
 

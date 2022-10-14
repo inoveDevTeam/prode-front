@@ -7,12 +7,13 @@ import Structure from "../components/Structure";
 import PuntuacionUser from "../components/ranking/PuntuacionUser";
 import CardPodio from "../components/ranking/CardPodio";
 import { instancia } from "../components/interceptors";
+import userEvent from "@testing-library/user-event";
 
 function PantallaRanking() {
   const [arrRankingGlobalPodio, setArrRankingGlobalPodio] = useState([])
   const [arrRankingGlobal, setArrRankingGlobal] = useState([])
   const { state, dispatch } = useContext(AppContext)
-  const { ranking } = state;
+  const { ranking, user } = state;
 
   useEffect(() => {
     getRanking()
@@ -39,6 +40,8 @@ function PantallaRanking() {
       .catch(err => console.log(err))
   }
 
+  console.log("ranking", ranking)
+
   return (
     <Structure>
       <div className="containerPP">
@@ -58,20 +61,20 @@ function PantallaRanking() {
               <div className="cont-podio">
                 {arrRankingGlobalPodio.map((rank) => (
                   <CardPodio
-                    nombre={rank.first_name + ' ' + rank.last_name}
+                    nombre={rank.username}
                     podio={posiciones[rank.posicion]}
                     posicion={rank.posicion}
                     puntos={rank.puntaje_total}
                   />
                 ))}
               </div>
-              {arrRankingGlobal.map((rank) => 
-                    <CardRanking
-                      nombre={rank.first_name + ' ' + rank.last_name}
-                      podio={posiciones[rank.posicion]}
-                      posicion={rank.posicion}
-                      puntos={rank.puntaje_total}
-                    />
+              {arrRankingGlobal.map((rank) =>
+                <CardRanking
+                  nombre={rank.username}
+                  podio={posiciones[rank.posicion]}
+                  posicion={rank.posicion}
+                  puntos={rank.puntaje_total}
+                />
               )}
             </div>
           </article>
