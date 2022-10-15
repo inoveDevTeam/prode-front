@@ -6,7 +6,8 @@ import IconDevs from '../assets/img/icon-devs3.svg'
 import { useNavigate } from "react-router-dom";
 import ButtonLogIn from "./ButtonLogIn";
 import { useContext } from "react";
-import { AppContext } from "../appInfo"
+import { AppContext } from "../appInfo";
+import ButtonLogOut from "./ButtonLogout";
 
 function NavBar() {
   const { state } = useContext(AppContext)
@@ -15,11 +16,12 @@ function NavBar() {
   const redirectTo = (url) => {
     navigate(url)
   }
+  console.log(userHabilitado)
   if(mobile){
     return (
       <>
         {userHabilitado
-          ? null
+          ? <ButtonLogOut />
           : <ButtonLogIn />
         }
         
@@ -52,7 +54,7 @@ function NavBar() {
     return (
       <>
         {userHabilitado
-          ? null
+          ? <ButtonLogOut />
           : <ButtonLogIn />
         }
         

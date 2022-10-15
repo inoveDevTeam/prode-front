@@ -22,10 +22,10 @@ function CardPartidos({ infoPartido }) {
     <div className="cont-cardPartido">
       <div className="cont-nomEquipos">
         <div className="equipo">
-          <p>{infoPartido.equipo_1_name}</p>
+          <p>{infoPartido.equipo_1}</p>
         </div>
         <div className="equipo">
-          <p>{infoPartido.equipo_2_name}</p>
+          <p>{infoPartido.equipo_2}</p>
         </div>
       </div>
       <div className="cont-datosPartido">
@@ -47,10 +47,12 @@ function CardPartidos({ infoPartido }) {
           infoPartido={infoPartido}
         />
         <Resultado />
+
         {/* <div className="cont-puntosObt">
           <p>Puntos Obtenidos</p>
           <Input />
         </div> */}
+        
       </div>
     </div>
   )

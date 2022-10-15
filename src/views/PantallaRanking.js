@@ -13,7 +13,7 @@ function PantallaRanking() {
   const [arrRankingGlobalPodio, setArrRankingGlobalPodio] = useState([])
   const [arrRankingGlobal, setArrRankingGlobal] = useState([])
   const { state, dispatch } = useContext(AppContext)
-  const { ranking, user } = state;
+  const { ranking, user, userHabilitado } = state;
 
   useEffect(() => {
     getRanking()
@@ -53,31 +53,35 @@ function PantallaRanking() {
             <h1>Ranking</h1>
           </article>
           <PuntuacionUser />
-          <article className="rank-global">
-            <div className="cont-tit-punt">
-              <h3>Puntuación Global</h3>
-            </div>
-            <div className="cont-card-ranking">
-              <div className="cont-podio">
-                {arrRankingGlobalPodio.map((rank) => (
-                  <CardPodio
+          {userHabilitado
+            ?
+            <article className="rank-global">
+              <div className="cont-tit-punt">
+                <h3>Puntuación Global</h3>
+              </div>
+              <div className="cont-card-ranking">
+                <div className="cont-podio">
+                  {arrRankingGlobalPodio.map((rank) => (
+                    <CardPodio
+                      nombre={rank.username}
+                      podio={posiciones[rank.posicion]}
+                      posicion={rank.posicion}
+                      puntos={rank.puntaje_total}
+                    />
+                  ))}
+                </div>
+                {arrRankingGlobal.map((rank) =>
+                  <CardRanking
                     nombre={rank.username}
                     podio={posiciones[rank.posicion]}
                     posicion={rank.posicion}
                     puntos={rank.puntaje_total}
                   />
-                ))}
+                )}
               </div>
-              {arrRankingGlobal.map((rank) =>
-                <CardRanking
-                  nombre={rank.username}
-                  podio={posiciones[rank.posicion]}
-                  posicion={rank.posicion}
-                  puntos={rank.puntaje_total}
-                />
-              )}
-            </div>
-          </article>
+            </article>
+            : <p>Debe loguearse para ver el ranking</p>
+          }
         </section>
       </div>
 

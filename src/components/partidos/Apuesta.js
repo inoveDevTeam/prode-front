@@ -15,7 +15,7 @@ function Apuesta({ editable, infoPartido }) {
   const { state } = useContext(AppContext);
   const { userHabilitado } = state;
 
-  useEffect(()=>{
+  useEffect(() => {
   })
 
   const handleChange = (e) => {
@@ -30,13 +30,13 @@ function Apuesta({ editable, infoPartido }) {
   const handleClick = (e) => {
     if (e.target.name === "confirmar") {
       instancia.post(process.env.REACT_APP_PARTIDOS_URL, {
-        headers: {
-          'partido_id': infoPartido.partido_id,
-          'pronostico_equipo_1': valorApuesta.apuestaEq1,
-          'pronostico_equipo_2': valorApuesta.apuestaEq2,
-        }
+        'partido_id': infoPartido.partido_id,
+        'pronostico_equipo_1': valorApuesta.apuestaEq1,
+        'pronostico_equipo_2': valorApuesta.apuestaEq2,
       },
       )
+      .then((res)=>{console.log(res)})
+      .catch((err)=>{console.log(err)})
     }
     if (e.target.name === "editar" && !editable) {
       alert('no puede realizar la apuesta porque el partido ya comenzo')

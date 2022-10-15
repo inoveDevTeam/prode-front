@@ -1,6 +1,6 @@
 import '../assets/styles/logIn.scss'
 import logoInove from '../assets/img/iconoinove.png'
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AppContext } from '../appInfo';
@@ -10,6 +10,10 @@ export default function LogIn() {
   const [validadorInicio, setValidadorInicio] = useState({ user: '', password: '' })
   const { state, dispatch } = useContext(AppContext);
   const { user, userHabilitado } = state;
+
+  useEffect(()=>{
+    
+  })
 
   const handleChange = (e) => {
     setValidadorInicio((state) => ({
@@ -38,6 +42,7 @@ export default function LogIn() {
     if(e.target.name === 'iniciarSesion'){
       postUser()
       navigate("/")
+      window.location.reload()
     }
     if(e.target.name === 'crearCuenta'){
       console.log("crenadoCuenta")

@@ -1,27 +1,27 @@
 import "../assets/styles/buttonLogIn.scss"
-import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../appInfo";
 
-function ButtonLogIn(){
+function ButtonLogOut(){
   const {state} = useContext(AppContext)
   const {mobile} = state
   const navigate = useNavigate();
 
-  const redirectTo = (url)=>{
-    navigate(url);
-  }
-
+  console.log("Button Log Out")
   return(
     <button 
       className={mobile ?"buttonLogIn" : "buttonLogIn-desk"}
-      onClick={()=>{redirectTo("/logIn")}}
+      onClick={()=>{
+        localStorage.removeItem("userAgeRedBull");
+        window.location.reload();
+      }}
       >
-      <LoginIcon />
-      <span>Iniciar Sesion</span>
+      <LogoutIcon />
+      <span>Cerrar Sesion</span>
     </button>
   )
 }
 
-export default ButtonLogIn
+export default ButtonLogOut

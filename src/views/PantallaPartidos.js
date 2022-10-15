@@ -15,10 +15,6 @@ function PantallaPartidos() {
     getPartidos()
   }, [])
 
-  useEffect(() => {
-    // console.log("reload")
-  }, [partidos])
-
   const getPartidos = () => {
     instancia.get(process.env.REACT_APP_PARTIDOS_URL)
       .then((res) => {
@@ -49,7 +45,7 @@ function PantallaPartidos() {
               partidos?.map(partido => (
                 <CardPartidos infoPartido={partido} />
               ))
-              : <p>No hay partidos</p>
+              : <p>Debe loguearse para ver los partidos</p>
             }
           </article>
         </section>
