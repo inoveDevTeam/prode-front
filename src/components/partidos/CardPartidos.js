@@ -2,6 +2,7 @@ import Apuesta from "../partidos/Apuesta"
 import Resultado from "../partidos/Resultado"
 
 import '../../assets/styles/partidos/cardPartidos.scss'
+import { indigo } from "@mui/material/colors"
 
 function CardPartidos({ infoPartido }) {
 
@@ -34,7 +35,7 @@ function CardPartidos({ infoPartido }) {
             <p>{infoPartido.fecha}</p>
           </div>
           <div className="cont-obs">
-            {infoPartido.descripcion}
+            {infoPartido.descripcion}{infoPartido.partido_id}
           </div>
         </div>
         <div className={`cont-estado ${tiposEstadosCss[infoPartido.estado]}`}>
@@ -46,13 +47,20 @@ function CardPartidos({ infoPartido }) {
           editable={infoPartido.estado == 0 ? true : false}
           infoPartido={infoPartido}
         />
-        <Resultado />
+        {infoPartido.estado == 2
+          ? <Resultado eq1={infoPartido.resultado_equipo_1} eq2={infoPartido.resultado_equipo_2} />
+          : <Resultado eq1={"?"} eq2={"?"} />
+        }
+
+        {infoPartido.estado == 2
+
+        }
 
         {/* <div className="cont-puntosObt">
           <p>Puntos Obtenidos</p>
           <Input />
         </div> */}
-        
+
       </div>
     </div>
   )

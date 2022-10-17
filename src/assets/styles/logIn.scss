@@ -72,6 +72,19 @@
   padding: 0 2%;
 }
 
+.inp-error{
+  border: 2px solid #ca1717;
+  padding: 0 2%;
+}
+
+.error{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ca1717;
+}
+
 .cont-bts{
   width: 100%;
   display: flex;

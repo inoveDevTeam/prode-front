@@ -7,16 +7,14 @@ import Confirmar from "../../assets/img/Confirmar.svg"
 import { useContext } from "react";
 import { AppContext } from "../../appInfo"
 import { instancia } from "../interceptors"
+import toast from "react-hot-toast"
 //import toast from "react-hot-toast"
 
 function Apuesta({ editable, infoPartido }) {
   const [editar, setEditar] = useState(false)
   const [valorApuesta, setValorApuesta] = useState({ apuestaEq1: '', apuestaEq2: '' })
-  const { state } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
   const { userHabilitado } = state;
-
-  useEffect(() => {
-  })
 
   const handleChange = (e) => {
     if (e.target.value.length <= 2) {
@@ -29,19 +27,39 @@ function Apuesta({ editable, infoPartido }) {
 
   const handleClick = (e) => {
     if (e.target.name === "confirmar") {
+      console.log("Click en confirmar")
       instancia.post(process.env.REACT_APP_PARTIDOS_URL, {
         'partido_id': infoPartido.partido_id,
         'pronostico_equipo_1': valorApuesta.apuestaEq1,
         'pronostico_equipo_2': valorApuesta.apuestaEq2,
       },
       )
-      .then((res)=>{console.log(res)})
+      .then((res)=>{
+        console.log(res)
+        setEditar(false)
+        toast.success("La apuesta se realizo con exito")
+        getPartidos()
+      })
       .catch((err)=>{console.log(err)})
     }
     if (e.target.name === "editar" && !editable) {
-      alert('no puede realizar la apuesta porque el partido ya comenzo')
+      toast.error("No puede realizar la apuesta porque el partido ya comenzo")
+      setEditar(false)
+    }else{
+      setEditar(true)
     }
-    setEditar(!editar)
+  }
+
+  const getPartidos = () => {
+    console.log("nuevo get a partidos")
+    instancia.get(process.env.REACT_APP_PARTIDOS_URL)
+      .then((res) => {
+        // console.log(res)
+        dispatch({ type: "setPartidos", payload: res.data.data })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   return (

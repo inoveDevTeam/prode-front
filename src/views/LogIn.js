@@ -4,16 +4,14 @@ import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AppContext } from '../appInfo';
+import { ConstructionOutlined } from '@mui/icons-material';
 
 export default function LogIn() {
   const navigate = useNavigate();
   const [validadorInicio, setValidadorInicio] = useState({ user: '', password: '' })
+  const [error, setError] = useState(false)
   const { state, dispatch } = useContext(AppContext);
   const { user, userHabilitado } = state;
-
-  useEffect(()=>{
-    
-  })
 
   const handleChange = (e) => {
     setValidadorInicio((state) => ({
@@ -28,23 +26,28 @@ export default function LogIn() {
       password: validadorInicio.password
     })
       .then((res) => {
+        console.log(res.status)
         console.log(res)
-        dispatch({type: "setUser", payload: res.data });
-        dispatch({type: "setUserHabilitado", payload: true });
+        dispatch({ type: "setUser", payload: res.data });
+        dispatch({ type: "setUserHabilitado", payload: true });
         localStorage.setItem('userAgeRedBull', JSON.stringify(res.data))
+        navigate("/")
+        window.location.reload()
       })
       .catch((err) => {
         console.log(err)
+        console.log(err.request.status)
+        setError(true)
+        console.log(error)
       })
   }
 
-  const handleSubmit = (e)=>{
-    if(e.target.name === 'iniciarSesion'){
+  const handleSubmit = (e) => {
+    if (e.target.name === 'iniciarSesion') {
       postUser()
-      navigate("/")
-      window.location.reload()
+      // window.location.reload()
     }
-    if(e.target.name === 'crearCuenta'){
+    if (e.target.name === 'crearCuenta') {
       console.log("crenadoCuenta")
     }
   }
@@ -59,7 +62,7 @@ export default function LogIn() {
         <div className='form-login'>
           <input
             type="text"
-            className='inputInicio inp-user'
+            className={error ? 'inputInicio inp-user inp-error' : 'inputInicio inp-user '}
             placeholder='Usuario'
             name='user'
             value={validadorInicio.user}
@@ -68,13 +71,20 @@ export default function LogIn() {
           />
           <input
             type="password"
-            className='inputInicio inp-pass'
+            className={error ? 'inputInicio inp-pass inp-error' : 'inputInicio inp-pass '}
             placeholder='Contraseña'
             name='password'
             value={validadorInicio.password}
             onChange={handleChange}
             autoComplete="off"
           />
+        </div>
+        <div className={"error"}>
+          {error
+            ?
+            <p>Usuario o Contraseña invalidos</p>
+            : null
+          }
         </div>
         <div className='cont-bts'>
           <input
