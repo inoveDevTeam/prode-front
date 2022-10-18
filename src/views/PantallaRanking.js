@@ -21,7 +21,7 @@ function PantallaRanking() {
 
   useEffect(() => {
     if (ranking.ranking) {
-      setArrRankingGlobalPodio(ranking.ranking.slice(0, 2))
+      setArrRankingGlobalPodio(ranking.ranking.slice(0, 3))
       setArrRankingGlobal(ranking.ranking.slice(3))
     }
   }, [ranking])

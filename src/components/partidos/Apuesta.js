@@ -12,7 +12,9 @@ import toast from "react-hot-toast"
 
 function Apuesta({ editable, infoPartido }) {
   const [editar, setEditar] = useState(false)
-  const [valorApuesta, setValorApuesta] = useState({ apuestaEq1: '', apuestaEq2: '' })
+  const [valorApuesta, setValorApuesta] = useState(
+    { apuestaEq1: infoPartido.pronostico_equipo_1 == null? '' : infoPartido.pronostico_equipo_1,
+      apuestaEq2: infoPartido.pronostico_equipo_2 == null? '' : infoPartido.pronostico_equipo_2})
   const { state, dispatch } = useContext(AppContext);
   const { userHabilitado } = state;
 
