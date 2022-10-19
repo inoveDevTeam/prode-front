@@ -8,6 +8,7 @@ import PuntuacionUser from "../components/ranking/PuntuacionUser";
 import CardPodio from "../components/ranking/CardPodio";
 import { instancia } from "../components/interceptors";
 import userEvent from "@testing-library/user-event";
+import toast from 'react-hot-toast';
 
 function PantallaRanking() {
   const [arrRankingGlobalPodio, setArrRankingGlobalPodio] = useState([])
@@ -37,7 +38,9 @@ function PantallaRanking() {
       .then(res => {
         dispatch({ type: "setRanking", payload: res.data })
       })
-      .catch(err => console.log(err))
+      .catch(err =>
+        toast.err("Hubo un error al cargar los ranking")
+      )
   }
 
   return (

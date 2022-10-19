@@ -1,6 +1,6 @@
 import Banner from "../components/Banner"
 import CardPartidos from "../components/partidos/CardPartidos"
-import { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import '../assets/styles/partidos/pantallaPartidos.scss'
 import { useContext, useEffect } from "react";
 import Structure from "../components/Structure";
@@ -22,7 +22,7 @@ function PantallaPartidos() {
         dispatch({ type: "setPartidos", payload: res.data.data })
       })
       .catch((err) => {
-        console.log(err)
+        toast.err("Hubo un error al cargar los partidos")
       })
   }
 
@@ -30,11 +30,6 @@ function PantallaPartidos() {
   return (
     <Structure>
       <div className="containerPP">
-        <Toaster 
-           containerStyle={{
-            top: '90px'
-           }}
-        />
         <section className="contpp-banner">
           <Banner />
         </section>

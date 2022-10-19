@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { AppContext } from "../appInfo"
 import NavBar from "./NavBar"
+import { Toaster } from "react-hot-toast"
 
 function Structure({ children }) {
   const { state } = useContext(AppContext)
@@ -19,6 +20,11 @@ function Structure({ children }) {
           {children}
         </>
       }
+      <Toaster 
+           containerStyle={{
+            top: '90px'
+           }}
+        />
 
     </div>
   )
