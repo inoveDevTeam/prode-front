@@ -1,20 +1,20 @@
-import Input from "./Input"
-import Separador from "../Separador"
-import "../../assets/styles/partidos/apuesta.scss"
-import { useEffect, useState } from "react"
-import Editar from "../../assets/img/Editar.svg"
-import Confirmar from "../../assets/img/Confirmar.svg"
+import { useState } from "react"
 import { useContext } from "react";
 import { AppContext } from "../../appInfo"
 import { instancia } from "../interceptors"
 import toast from "react-hot-toast"
+import Input from "./Input"
+import Separador from "../Separador"
+import Confirmar from "../../assets/img/Confirmar.svg"
+import Editar from "../../assets/img/Editar.svg"
+import "../../assets/styles/partidos/apuesta.scss"
 
 function Apuesta({ editable, infoPartido }) {
   const [editar, setEditar] = useState(false)
   const [valorApuesta, setValorApuesta] = useState(
     {
-      apuestaEq1: infoPartido.pronostico_equipo_1 == null ? '' : infoPartido.pronostico_equipo_1,
-      apuestaEq2: infoPartido.pronostico_equipo_2 == null ? '' : infoPartido.pronostico_equipo_2
+      apuestaEq1: infoPartido.pronostico_equipo_1 === null ? '' : infoPartido.pronostico_equipo_1,
+      apuestaEq2: infoPartido.pronostico_equipo_2 === null ? '' : infoPartido.pronostico_equipo_2
     })
   const { state, dispatch } = useContext(AppContext);
   const { userHabilitado } = state;
@@ -61,14 +61,12 @@ function Apuesta({ editable, infoPartido }) {
   }
 
   const getPartidos = () => {
-    console.log("nuevo get a partidos")
     instancia.get(process.env.REACT_APP_PARTIDOS_URL)
       .then((res) => {
-        // console.log(res)
         dispatch({ type: "setPartidos", payload: res.data.data })
       })
       .catch((err) => {
-        console.log(err)
+        toast.err("Hubo un error al cargar los partidos, por favor recargue la pagina.")
       })
   }
   return (
@@ -118,7 +116,6 @@ function Apuesta({ editable, infoPartido }) {
               )
               :null
             }
-
           </div>
           : null
         }

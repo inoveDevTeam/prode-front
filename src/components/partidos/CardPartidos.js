@@ -15,8 +15,6 @@ function CardPartidos({ infoPartido }) {
     2: 'finalizado'
   }
 
-  console.log("INFO PARTIDO", infoPartido)
-
   return (
     <div className="cont-cardPartido">
       <div className="cont-nomEquipos">
@@ -42,14 +40,13 @@ function CardPartidos({ infoPartido }) {
       </div>
       <div className="cont-resul-apu">
         <Apuesta
-          editable={infoPartido.estado == 0 ? true : false}
+          editable={infoPartido.estado === 0 ? true : false}
           infoPartido={infoPartido}
         />
-        {infoPartido.estado == 2
+        {infoPartido.estado === 2
           ? <Resultado eq1={infoPartido.resultado_equipo_1} eq2={infoPartido.resultado_equipo_2} />
           : <Resultado eq1={"?"} eq2={"?"} />
         }
-
         {infoPartido.estado == 2
           ?
           <div className="cont-puntosObt">

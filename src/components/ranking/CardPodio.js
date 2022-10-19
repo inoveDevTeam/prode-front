@@ -1,6 +1,7 @@
-import '../../assets/styles/ranking/cardPodio.scss'
-import User from '../../assets/img/user 1.svg'
 import Puntos from './Puntos'
+import User from '../../assets/img/user 1.svg'
+import '../../assets/styles/ranking/cardPodio.scss'
+
 function CardPodio({ podio, posicion, puntos, nombre}) {
   return (
     <>

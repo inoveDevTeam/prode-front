@@ -1,6 +1,6 @@
-import CardRanking from "./CardRanking"
 import { useContext } from "react";
 import { AppContext } from "../../appInfo"
+import CardRanking from "./CardRanking"
 
 function PuntuacionUser() {
   const { state } = useContext(AppContext);
@@ -18,7 +18,6 @@ function PuntuacionUser() {
             <CardRanking
               podio={'normal'}
               nombre={user.username}
-              // podio={posiciones[rank.posicion]}
               posicion={ranking.posicion}
               puntos={ranking.puntaje_total}
             />

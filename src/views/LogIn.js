@@ -1,17 +1,15 @@
-import '../assets/styles/logIn.scss'
-import logoInove from '../assets/img/iconoinove.png'
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { AppContext } from '../appInfo';
-import { ConstructionOutlined } from '@mui/icons-material';
+import axios from "axios";
+import logoInove from '../assets/img/iconoinove.png'
+import '../assets/styles/logIn.scss'
 
 export default function LogIn() {
   const navigate = useNavigate();
   const [validadorInicio, setValidadorInicio] = useState({ user: '', password: '' })
   const [error, setError] = useState(false)
-  const { state, dispatch } = useContext(AppContext);
-  const { user, userHabilitado } = state;
+  const { dispatch } = useContext(AppContext);
 
   const handleChange = (e) => {
     setValidadorInicio((state) => ({
@@ -26,8 +24,6 @@ export default function LogIn() {
       password: validadorInicio.password
     })
       .then((res) => {
-        console.log(res.status)
-        console.log(res)
         dispatch({ type: "setUser", payload: res.data });
         dispatch({ type: "setUserHabilitado", payload: true });
         localStorage.setItem('userAgeRedBull', JSON.stringify(res.data))
@@ -35,17 +31,13 @@ export default function LogIn() {
         window.location.reload()
       })
       .catch((err) => {
-        console.log(err)
-        console.log(err.request.status)
         setError(true)
-        console.log(error)
       })
   }
 
   const handleSubmit = (e) => {
     if (e.target.name === 'iniciarSesion') {
       postUser()
-      // window.location.reload()
     }
     if (e.target.name === 'crearCuenta') {
       console.log("crenadoCuenta")
@@ -94,14 +86,6 @@ export default function LogIn() {
             name='iniciarSesion'
             onClick={handleSubmit}
           />
-          {/* 
-          <input
-            type="submit"
-            className='inputInicio btn-crearCu'
-            value="Crear Cuenta"
-            name='crearCuenta'
-            onClick={handleSubmit}
-          /> */}
         </div>
       </div>
     </div>

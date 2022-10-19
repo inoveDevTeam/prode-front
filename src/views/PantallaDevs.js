@@ -4,7 +4,7 @@ import '../assets/styles/devs/pantallaDevs.scss';
 
 function PantallaDevs() {
   return (
-    <Structure>
+    <Structure activo={"devs"}>
       <div className="containerPP">
         <div className="contpp-devs">
           <CardDesarrollador

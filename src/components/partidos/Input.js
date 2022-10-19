@@ -1,6 +1,6 @@
 import '../../assets/styles/partidos/input.scss'
-function Input({ value, onChange, name, editar, readOnly }) {
 
+function Input({ value, onChange, name, editar, readOnly }) {
   return (
     <div className='cont-inp'>
       {readOnly

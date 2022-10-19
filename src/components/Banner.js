@@ -1,12 +1,11 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
-import "../assets/styles/banner.scss";
-
 import fotoBanner1 from "../assets/img/wololo-iii-imagen.avif"
 import fotoBanner2 from "../assets/img/locoser2.svg"
 import fotoBanner3 from "../assets/img/inove2.svg"
+import "../assets/styles/banner.scss";
+import "swiper/css/pagination";
+import "swiper/css";
 
 function Banner() {
   return (

@@ -1,15 +1,15 @@
-import Banner from "../components/Banner"
-import CardPartidos from "../components/partidos/CardPartidos"
-import toast from 'react-hot-toast';
-import '../assets/styles/partidos/pantallaPartidos.scss'
 import { useContext, useEffect } from "react";
-import Structure from "../components/Structure";
 import { AppContext } from "../appInfo";
 import { instancia } from "../components/interceptors";
+import toast from 'react-hot-toast';
+import Banner from "../components/Banner"
+import CardPartidos from "../components/partidos/CardPartidos"
+import Structure from "../components/Structure";
+import '../assets/styles/partidos/pantallaPartidos.scss'
 
 function PantallaPartidos() {
   const { state, dispatch } = useContext(AppContext);
-  const { user, partidos } = state;
+  const { partidos } = state;
 
   useEffect(() => {
     getPartidos()
@@ -18,7 +18,6 @@ function PantallaPartidos() {
   const getPartidos = () => {
     instancia.get(process.env.REACT_APP_PARTIDOS_URL)
       .then((res) => {
-        // console.log(res)
         dispatch({ type: "setPartidos", payload: res.data.data })
       })
       .catch((err) => {
@@ -26,9 +25,8 @@ function PantallaPartidos() {
       })
   }
 
-  // console.log("PARTIDOS", partidos)
   return (
-    <Structure>
+    <Structure activo={'partido'}>
       <div className="containerPP">
         <section className="contpp-banner">
           <Banner />

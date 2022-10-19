@@ -1,9 +1,9 @@
 import { useContext } from "react"
 import { AppContext } from "../appInfo"
-import NavBar from "./NavBar"
 import { Toaster } from "react-hot-toast"
+import NavBar from "./NavBar"
 
-function Structure({ children }) {
+function Structure({ children, activo }) {
   const { state } = useContext(AppContext)
   const { mobile } = state
   return (
@@ -12,7 +12,7 @@ function Structure({ children }) {
         ?
         <>
           { children }
-          < NavBar />
+          < NavBar activo={activo} />
         </>
         :
         <>

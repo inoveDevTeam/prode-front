@@ -1,22 +1,20 @@
-import { Link } from "react-router-dom";
-import '../assets/styles/navBar.scss'
-import IconPartido from '../assets/img/icon-partido.svg'
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "../appInfo";
+import ButtonLogIn from "./ButtonLogIn";
+import ButtonLogOut from "./ButtonLogout";
 import IconRanking from '../assets/img/icon-podio.svg'
 import IconDevs from '../assets/img/icon-devs3.svg'
-import { useNavigate } from "react-router-dom";
-import ButtonLogIn from "./ButtonLogIn";
-import { useContext } from "react";
-import { AppContext } from "../appInfo";
-import ButtonLogOut from "./ButtonLogout";
+import IconPartido from '../assets/img/partido 1 (1).svg'
+import '../assets/styles/navBar.scss'
 
-function NavBar() {
+function NavBar({ activo }) {
   const { state } = useContext(AppContext)
   const { userHabilitado, mobile } = state;
   const navigate = useNavigate();
   const redirectTo = (url) => {
     navigate(url)
   }
-  console.log(userHabilitado)
   if(mobile){
     return (
       <>
@@ -27,22 +25,18 @@ function NavBar() {
         
         <nav className="cont-nav">
           <ul className="nav">
-            <li className="ranking">
-              <a
-                onClick={() => redirectTo("/ranking")}
-              >
+            <li className={activo == "ranking" ?"ranking activo" :"ranking"}>
+              <a onClick={() => redirectTo("/ranking")}>
                 <img src={IconRanking} />
               </a>
             </li>
-            <li className="partido">
+            <li className={activo == "partido" ?"partido activo" :"partido"}>
               <a onClick={() => redirectTo("/")}>
-                <img src={IconPartido} />
+                <img className="icon-partido" src={IconPartido} />
               </a>
             </li>
-            <li className="devs">
-              <a
-                onClick={() => redirectTo("/devs")}
-              >
+            <li className={activo == "devs" ?"devs activo" :"devs"}>
+              <a onClick={() => redirectTo("/devs")}>
                 <img src={IconDevs} />
               </a>
             </li>
@@ -57,13 +51,10 @@ function NavBar() {
           ? <ButtonLogOut />
           : <ButtonLogIn />
         }
-        
         <nav className="cont-nav-desk">
           <ul className="nav">
             <li className="ranking">
-              <a
-                onClick={() => redirectTo("/ranking")}
-              >
+              <a onClick={() => redirectTo("/ranking")}>
                 <img src={IconRanking} />
               </a>
             </li>
@@ -73,9 +64,7 @@ function NavBar() {
               </a>
             </li>
             <li className="devs">
-              <a
-                onClick={() => redirectTo("/devs")}
-              >
+              <a onClick={() => redirectTo("/devs")}>
                 <img src={IconDevs} />
               </a>
             </li>

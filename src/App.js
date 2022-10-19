@@ -1,19 +1,17 @@
-import LogIn from './views/LogIn';
-import PantallaPartidos from './views/PantallaPartidos'
-import PantallaRanking from './views/PantallaRanking'
-import PantallaDevs from './views/PantallaDevs'
-import { appReducer, initialState, AppContext } from "./appInfo";
-import './App.scss';
-import { useState, useReducer, useEffect } from "react";
+import { useReducer, useEffect } from "react";
 import {
   Route,
   Routes,
 } from "react-router-dom";
+import { appReducer, initialState, AppContext } from "./appInfo";
+import LogIn from './views/LogIn';
+import PantallaPartidos from './views/PantallaPartidos'
+import PantallaRanking from './views/PantallaRanking'
+import PantallaDevs from './views/PantallaDevs'
+import './App.scss';
 
 function App() {
   const [state, dispatch] = useReducer(appReducer, initialState);
-  const { userHabilitado, user, mobile } = state;
-  const [items, setItems] = useState([])
 
   useEffect(() => {
     currentUser();
@@ -40,8 +38,6 @@ function App() {
       }
   }
 
-  //TODO revisar el codigo y optimisarlo
-
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       <Routes>
@@ -50,7 +46,6 @@ function App() {
         <Route path='/devs' element={<PantallaDevs />} />
         <Route path='/logIn' element={<LogIn />} />
       </Routes>
-      {/* <NavBar /> */}
     </AppContext.Provider>
   );
 }

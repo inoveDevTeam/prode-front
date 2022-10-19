@@ -1,7 +1,6 @@
-import '../../assets/styles/ranking/cardRanking.scss'
-import User from '../../assets/img/user 1.svg'
 import Puntos from './Puntos'
-
+import User from '../../assets/img/user 1.svg'
+import '../../assets/styles/ranking/cardRanking.scss'
 
 function CardRanking({ posicion, puntos, nombre}) {
   return (
@@ -14,7 +13,6 @@ function CardRanking({ posicion, puntos, nombre}) {
       </div>
       <Puntos valor={posicion} color={''}/>
     </div>
-
     </>
   )
 }

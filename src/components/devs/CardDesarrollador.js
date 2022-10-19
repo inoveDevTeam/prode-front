@@ -2,8 +2,6 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailIcon from '@mui/icons-material/Email';
 import "../../assets/styles/devs/CardDesarrollador.scss";
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 
 function CardDesarrollador({ nombre, papel, redes }) {
   return (
@@ -36,7 +34,6 @@ function CardDesarrollador({ nombre, papel, redes }) {
           </div>
         </div>
       </div>
-
     </div>
   )
 }

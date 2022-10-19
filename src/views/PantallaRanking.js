@@ -1,20 +1,19 @@
 import { useContext, useEffect, useState } from "react"
 import { AppContext } from "../appInfo"
-import Banner from "../components/Banner";
-import '../assets/styles/ranking/pantallaRanking.scss'
-import CardRanking from "../components/ranking/CardRanking";
-import Structure from "../components/Structure";
-import PuntuacionUser from "../components/ranking/PuntuacionUser";
-import CardPodio from "../components/ranking/CardPodio";
 import { instancia } from "../components/interceptors";
-import userEvent from "@testing-library/user-event";
 import toast from 'react-hot-toast';
+import Banner from "../components/Banner";
+import CardPodio from "../components/ranking/CardPodio";
+import CardRanking from "../components/ranking/CardRanking";
+import PuntuacionUser from "../components/ranking/PuntuacionUser";
+import Structure from "../components/Structure";
+import '../assets/styles/ranking/pantallaRanking.scss'
 
 function PantallaRanking() {
   const [arrRankingGlobalPodio, setArrRankingGlobalPodio] = useState([])
   const [arrRankingGlobal, setArrRankingGlobal] = useState([])
   const { state, dispatch } = useContext(AppContext)
-  const { ranking, user, userHabilitado } = state;
+  const { ranking, userHabilitado } = state;
 
   useEffect(() => {
     getRanking()
@@ -39,12 +38,12 @@ function PantallaRanking() {
         dispatch({ type: "setRanking", payload: res.data })
       })
       .catch(err =>
-        toast.err("Hubo un error al cargar los ranking")
+        toast.err("Hubo un error al cargar los ranking, por favor recargue la pagina.")
       )
   }
 
   return (
-    <Structure>
+    <Structure activo={'ranking'}>
       <div className="containerPP">
         <section className="contpp-banner">
           <Banner />
@@ -81,7 +80,7 @@ function PantallaRanking() {
                 )}
               </div>
             </article>
-            : <p>Debe loguearse para ver el ranking</p>
+            : <p className="sin-dato">Debe loguearse para ver el ranking</p>
           }
         </section>
       </div>

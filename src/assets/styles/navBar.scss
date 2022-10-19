@@ -1,5 +1,7 @@
 $base-footer: #00162B;
 $borde-footer: #d90a40;
+$nav-actual: #002547;
+
 
 
 .cont-nav {
@@ -48,6 +50,18 @@ $borde-footer: #d90a40;
   .partido{
     border-left: 2px solid $borde-footer;
     border-right: 2px solid $borde-footer;
+  }
+
+  .activo{
+    background-color: $nav-actual!important;
+    
+    a img{
+      width: 50px;
+    }
+
+    a .icon-partido{
+      width: 78px;
+    }
   }
 }
 
@@ -107,5 +121,9 @@ $borde-footer: #d90a40;
   {
       color: #000000;
       text-decoration: none;
+  }
+
+  .activo{
+    background-color: #001c36!important;
   }
 }
