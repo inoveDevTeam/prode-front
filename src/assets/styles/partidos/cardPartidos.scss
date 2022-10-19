@@ -1,22 +1,23 @@
-$base-card: #00162B;
+$base-card: #050E1D; //020712 02050E
 $color-fuente: #fff;
 $color-nojugado: #d96e0a;
 $color-enjuego: #2cd90a;
 $color-finalizado: #d90a0a;
 
-.cont-cardPartido{
+.cont-cardPartido {
   background-color: $base-card;
   color: #fff;
   width: 100%;
   display: flex;
   flex-direction: column;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 5px;
+  padding-bottom: 0;
   max-width: 350px;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0);
 }
 
-.cont-nomEquipos{
+.cont-nomEquipos {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -24,18 +25,18 @@ $color-finalizado: #d90a0a;
   min-height: 40px;
 }
 
-.equipo{
+.equipo {
   width: 50%;
   text-align: center;
 }
 
-.equipo p{
+.equipo p {
   font-weight: 600;
   font-size: clamp(1.3rem, 2.5vw, 1.5rem);
   letter-spacing: 0.5px;
 }
 
-.cont-datosPartido{
+.cont-datosPartido {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -45,36 +46,53 @@ $color-finalizado: #d90a0a;
   font-size: clamp(0.8rem, 2.5vw, 0.85rem);
 }
 
-.cont-dato{
+.cont-dato {
   width: 75%;
 }
 
-.cont-estado{
+.cont-estado {
   width: 25%;
 }
 
-.no-jugado{
+.no-jugado {
   color: $color-nojugado;
 }
 
-.en-juego{
+.en-juego {
   color: $color-enjuego ;
 }
 
-.finalizado{
+.finalizado {
   color: $color-finalizado;
 }
 
-.cont-resul-apu{
+.cont-resul-apu {
   width: 100%;
-  min-height: 160px;
+  min-height: 170px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, $base-card 90.19%), url("../../img/red-bull-wololo-iii-blur.png") ;
+  //background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, $base-card 90.19%), url("../../img/red-bull-wololo-iii-blur.png") ;
+  background-image: -moz-radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(5,14,29,1) 100%), url("../../img/red-bull-wololo-iii-blur.png");
+background-image: -webkit-radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(5,14,29,1) 100%) , url("../../img/red-bull-wololo-iii-blur.png");
+background-image: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(5,14,29,1) 100%) , url("../../img/red-bull-wololo-iii-blur.png");
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#050e1d",GradientType=1);
   background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: normal, darken;
+  border-radius: 0 0 4px 4px;
+}
+
+.cont-puntosObt {
+  background-color: #fff;
+  color: $base-card;
+  font-weight: 600;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin: 5px 5px 10px;
 }
 
 // enero

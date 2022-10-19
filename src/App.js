@@ -2,7 +2,6 @@ import LogIn from './views/LogIn';
 import PantallaPartidos from './views/PantallaPartidos'
 import PantallaRanking from './views/PantallaRanking'
 import PantallaDevs from './views/PantallaDevs'
-import NavBar from './components/NavBar';
 import { appReducer, initialState, AppContext } from "./appInfo";
 import './App.scss';
 import { useState, useReducer, useEffect } from "react";
@@ -40,6 +39,8 @@ function App() {
         dispatch({type: "setMobile", payload: true})
       }
   }
+
+  //TODO revisar el codigo y optimisarlo
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>

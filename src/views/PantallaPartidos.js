@@ -27,7 +27,7 @@ function PantallaPartidos() {
   }
 
   // console.log("PARTIDOS", partidos)
-
+  //TODO tirar el toaster mas abajo para que no tape el navbar
   return (
     <Structure>
       <div className="containerPP">

@@ -8,13 +8,14 @@ import { useContext } from "react";
 import { AppContext } from "../../appInfo"
 import { instancia } from "../interceptors"
 import toast from "react-hot-toast"
-//import toast from "react-hot-toast"
 
 function Apuesta({ editable, infoPartido }) {
   const [editar, setEditar] = useState(false)
   const [valorApuesta, setValorApuesta] = useState(
-    { apuestaEq1: infoPartido.pronostico_equipo_1 == null? '' : infoPartido.pronostico_equipo_1,
-      apuestaEq2: infoPartido.pronostico_equipo_2 == null? '' : infoPartido.pronostico_equipo_2})
+    {
+      apuestaEq1: infoPartido.pronostico_equipo_1 == null ? '' : infoPartido.pronostico_equipo_1,
+      apuestaEq2: infoPartido.pronostico_equipo_2 == null ? '' : infoPartido.pronostico_equipo_2
+    })
   const { state, dispatch } = useContext(AppContext);
   const { userHabilitado } = state;
 
@@ -29,25 +30,32 @@ function Apuesta({ editable, infoPartido }) {
 
   const handleClick = (e) => {
     if (e.target.name === "confirmar") {
-      console.log("Click en confirmar")
       instancia.post(process.env.REACT_APP_PARTIDOS_URL, {
         'partido_id': infoPartido.partido_id,
         'pronostico_equipo_1': valorApuesta.apuestaEq1,
         'pronostico_equipo_2': valorApuesta.apuestaEq2,
       },
       )
-      .then((res)=>{
-        console.log(res)
-        setEditar(false)
-        toast.success("La apuesta se realizo con exito")
-        getPartidos()
-      })
-      .catch((err)=>{console.log(err)})
+        .then((res) => {
+          console.log(res)
+          setEditar(false)
+          toast.success("La apuesta se realizo con exito")
+          getPartidos()
+        })
+        .catch((err) => {
+          console.log(err)
+          if (err.response.status == 422) {
+            toast.err("La apuesta no pudo realizarse, por favor recargue la pagina")
+          } else {
+            toast.err("Ocurrio un error inesperado, por favor recargue la pagina")
+          }
+          setEditar(false)
+        })
     }
     if (e.target.name === "editar" && !editable) {
       toast.error("No puede realizar la apuesta porque el partido ya comenzo")
       setEditar(false)
-    }else{
+    } else {
       setEditar(true)
     }
   }
@@ -63,7 +71,6 @@ function Apuesta({ editable, infoPartido }) {
         console.log(err)
       })
   }
-
   return (
     <>
       <div className="apuesta">
@@ -89,23 +96,27 @@ function Apuesta({ editable, infoPartido }) {
         {userHabilitado
           ?
           <div className="edit">
-            {editar && editable
+            {infoPartido.estado == 0
               ?
-              <button
-                className="btn-apuesta btn-confirmar"
-                name="confirmar"
-                onClick={handleClick}
-              >
-                <img src={Confirmar} name="confirmar" alt="confirmar" />
-              </button>
-              :
-              <button
-                className="btn-apuesta btn-editar"
-                name="editar"
-                onClick={handleClick}
-              >
-                <img src={Editar} name="editar" alt="edit" />
-              </button>
+              ( editar && editable
+                ?
+                <button
+                  className="btn-apuesta btn-confirmar"
+                  name="confirmar"
+                  onClick={handleClick}
+                >
+                  <img src={Confirmar} name="confirmar" alt="confirmar" />
+                </button>
+                :
+                <button
+                  className="btn-apuesta btn-editar"
+                  name="editar"
+                  onClick={handleClick}
+                >
+                  <img src={Editar} name="editar" alt="edit" />
+                </button>
+              )
+              :null
             }
 
           </div>

@@ -4,9 +4,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "../assets/styles/banner.scss";
 
-import fotoBanner1 from "../assets/img/red-bull-wololo-iii-imagen.avif"
-import fotoBanner2 from "../assets/img/Banner1.png"
-import fotoBanner3 from "../assets/img/inove.jpg"
+import fotoBanner1 from "../assets/img/wololo-iii-imagen.avif"
+import fotoBanner2 from "../assets/img/locoser2.svg"
+import fotoBanner3 from "../assets/img/inove2.svg"
 
 function Banner() {
   return (
@@ -15,14 +15,12 @@ function Banner() {
         pagination={true}
         slidesPerView={1}
         centeredSlides={true}
-        // autoplay={{
-        //   pauseOnMouseEnter: true,
-        //   delay: 2500,
-        //   disableOnInteraction: false
-        // }}
-        // pagination={{
-        //   dynamicBullets: true,
-        // }}
+        style={{maxWidth: '600px'}}
+        autoplay={{
+          pauseOnMouseEnter: true,
+          delay: 2500,
+          disableOnInteraction: false
+        }}
         loop={true}
         modules={[Autoplay, Pagination]}
         className="mySwiper"

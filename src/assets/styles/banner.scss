@@ -43,7 +43,6 @@
 
 .cont-img{
    width: 100%;
-   min-height: 217px;
    height: inherit;
    background-color: #000;
    border-radius: 7px;
@@ -55,8 +54,9 @@
   margin: auto;
   width: 100%;
   height: auto;
+  min-height: 200px;
   max-width: 600px;
   image-rendering: -webkit-optimize-contrast;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 7px;
 }

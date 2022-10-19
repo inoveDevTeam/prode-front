@@ -1,11 +1,8 @@
 import Apuesta from "../partidos/Apuesta"
 import Resultado from "../partidos/Resultado"
-
 import '../../assets/styles/partidos/cardPartidos.scss'
-import { indigo } from "@mui/material/colors"
 
 function CardPartidos({ infoPartido }) {
-
   const tiposEstados = {
     0: 'no jugado',
     1: 'en juego',
@@ -19,6 +16,7 @@ function CardPartidos({ infoPartido }) {
   }
 
   console.log("INFO PARTIDO", infoPartido)
+
   return (
     <div className="cont-cardPartido">
       <div className="cont-nomEquipos">
@@ -35,7 +33,7 @@ function CardPartidos({ infoPartido }) {
             <p>{infoPartido.fecha}</p>
           </div>
           <div className="cont-obs">
-            {infoPartido.descripcion}{infoPartido.partido_id}
+            {infoPartido.descripcion}
           </div>
         </div>
         <div className={`cont-estado ${tiposEstadosCss[infoPartido.estado]}`}>
@@ -53,14 +51,12 @@ function CardPartidos({ infoPartido }) {
         }
 
         {infoPartido.estado == 2
-
+          ?
+          <div className="cont-puntosObt">
+            <p>Puntos Obtenidos: {infoPartido.puntaje}</p>
+          </div>
+          : null
         }
-
-        {/* <div className="cont-puntosObt">
-          <p>Puntos Obtenidos</p>
-          <Input />
-        </div> */}
-
       </div>
     </div>
   )
