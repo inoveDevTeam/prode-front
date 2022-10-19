@@ -40,10 +40,6 @@ function PantallaRanking() {
       .catch(err => console.log(err))
   }
 
-  console.log("ranking", ranking)
-
-  //TODO dar mas margin top al 4to puesto
-
   return (
     <Structure>
       <div className="containerPP">

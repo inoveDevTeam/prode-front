@@ -3,7 +3,6 @@ import Structure from "../components/Structure"
 import '../assets/styles/devs/pantallaDevs.scss';
 
 function PantallaDevs() {
-  //TODO completar info de devs
   return (
     <Structure>
       <div className="containerPP">
