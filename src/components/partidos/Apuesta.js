@@ -45,9 +45,9 @@ function Apuesta({ editable, infoPartido }) {
         .catch((err) => {
           console.log(err)
           if (err.response.status == 422) {
-            toast.err("La apuesta no pudo realizarse, por favor recargue la pagina")
+            toast.error("La apuesta se ha cerrado, por favor recargue la pagina")
           } else {
-            toast.err("Ocurrio un error inesperado, por favor recargue la pagina")
+            toast.error("Ocurrio un error inesperado, por favor recargue la pagina")
           }
           setEditar(false)
         })
@@ -66,7 +66,7 @@ function Apuesta({ editable, infoPartido }) {
         dispatch({ type: "setPartidos", payload: res.data.data })
       })
       .catch((err) => {
-        toast.err("Hubo un error al cargar los partidos, por favor recargue la pagina.")
+        toast.error("Hubo un error al cargar los partidos, por favor recargue la pagina.")
       })
   }
   return (

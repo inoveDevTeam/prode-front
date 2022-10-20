@@ -39,7 +39,7 @@ function PantallaRanking() {
         dispatch({ type: "setRanking", payload: res.data })
       })
       .catch(err =>
-        toast.err("Hubo un error al cargar los ranking, por favor recargue la pagina.")
+        toast.error("Hubo un error al cargar los ranking, por favor recargue la pagina.")
       )
   }
 
