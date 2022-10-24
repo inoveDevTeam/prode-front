@@ -21,8 +21,9 @@ function PantallaRanking() {
 
   useEffect(() => {
     if (ranking.ranking) {
-      setArrRankingGlobalPodio(ranking.ranking.slice(0, 3))
-      setArrRankingGlobal(ranking.ranking.slice(3))
+      // setArrRankingGlobalPodio(ranking.ranking.slice(0, 3))
+      // setArrRankingGlobal(ranking.ranking.slice(3))
+      setArrRankingGlobal(ranking.ranking)
     }
   }, [ranking])
 
@@ -60,7 +61,7 @@ function PantallaRanking() {
                 <h3>Puntuación Global</h3>
               </div>
               <div className="cont-card-ranking">
-                <div className="cont-podio">
+                {/* <div className="cont-podio">
                   {arrRankingGlobalPodio.map((rank) => (
                     <CardPodio
                       nombre={rank.username}
@@ -69,7 +70,7 @@ function PantallaRanking() {
                       puntos={rank.puntaje_total}
                     />
                   ))}
-                </div>
+                </div> */}
                 {arrRankingGlobal.map((rank) =>
                   <CardRanking
                     nombre={rank.username}
