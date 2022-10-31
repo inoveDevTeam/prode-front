@@ -1,9 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper";
-import fotoBanner1 from "../assets/img/wololo-iii-imagen.avif"
-import fotoBanner2 from "../assets/img/locoser2.svg"
-//import fotoBanner1 from "../assets/img/qatar.jpg"
-//import fotoBanner2 from "../assets/img/franja.jpg"
+//import fotoBanner1 from "../assets/img/wololo-iii-imagen.avif"
+//import fotoBanner2 from "../assets/img/locoser2.svg"
+import fotoBanner1 from "../assets/img/qatar.jpg"
+import fotoBanner2 from "../assets/img/franja.jpg"
 import fotoBanner3 from "../assets/img/inove2.svg"
 import "../assets/styles/banner.scss";
 import "swiper/css/pagination";
