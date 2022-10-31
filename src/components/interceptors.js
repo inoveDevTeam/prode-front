@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const instancia = axios.create();
 
-const userToken = JSON.parse(localStorage.getItem('userAgeRedBull'));
+const userToken = JSON.parse(localStorage.getItem('userProdeFmt'));
 
 instancia.interceptors.request.use(function (config) {
   config.token = userToken.token.toString() 
