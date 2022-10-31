@@ -3,7 +3,7 @@ version: "3.1"
 services:
   front:
     image: node:16.17.0
-    container_name: prode-front
+    container_name: prode-front-fmt
     command: sh build.sh
     working_dir: /prode/front
     volumes:
