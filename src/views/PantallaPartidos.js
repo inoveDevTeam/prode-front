@@ -21,7 +21,7 @@ function PantallaPartidos() {
         dispatch({ type: "setPartidos", payload: res.data.data })
       })
       .catch((err) => {
-        toast.err("Hubo un error al cargar los partidos")
+        toast.error("Hubo un error al cargar los partidos")
       })
   }
 
