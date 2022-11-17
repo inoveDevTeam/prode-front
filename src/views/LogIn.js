@@ -49,7 +49,7 @@ export default function LogIn() {
       <div className="cont-login">
         <div className='cont-logo'>
           <img src={logoInove} alt='logo inove' />
-          <h3>Age-RedBull</h3>
+          <h3>Prode Inove</h3>
         </div>
         <div className='form-login'>
           <input
