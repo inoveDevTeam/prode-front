@@ -1,8 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper";
-import fotoBanner1 from "../assets/img/wololo-iii-imagen.avif"
-import fotoBanner2 from "../assets/img/locoser2.svg"
-//import fotoBanner1 from "../assets/img/qatar.jpg"
+//import fotoBanner1 from "../assets/img/wololo-iii-imagen.avif"
+//import fotoBanner2 from "../assets/img/locoser2.svg"
+import fotoBanner1 from "../assets/img/qatar.jpg"
 //import fotoBanner2 from "../assets/img/franja.jpg"
 import fotoBanner3 from "../assets/img/inove2.svg"
 import "../assets/styles/banner.scss";
@@ -32,11 +32,11 @@ function Banner() {
               <img src={fotoBanner1} className="img-banner" />
             </div>
           </SwiperSlide>
-          <SwiperSlide>
+          {/* <SwiperSlide>
             <div className="cont-img">
               <img src={fotoBanner2} className="img-banner" />
             </div>
-          </SwiperSlide>
+          </SwiperSlide> */}
           <SwiperSlide>
             <div className="cont-img">
               <img src={fotoBanner3} className="img-banner" />
