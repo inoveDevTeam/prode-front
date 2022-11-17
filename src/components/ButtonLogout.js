@@ -13,7 +13,7 @@ function ButtonLogOut(){
     <button 
       className={mobile ?"buttonLogIn" : "buttonLogIn-desk"}
       onClick={()=>{
-        localStorage.removeItem("userAgeRedBull");
+        localStorage.removeItem("userProdeInove");
         window.location.reload();
       }}
       >

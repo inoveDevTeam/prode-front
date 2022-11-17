@@ -19,7 +19,7 @@ function App() {
   }, [])
 
   const currentUser = () => {
-    const item = JSON.parse(localStorage.getItem('userAgeRedBull'));
+    const item = JSON.parse(localStorage.getItem('userProdeInove'));
     if (item) {
       dispatch({type: "setUser", payload: item})
       dispatch({ type: "setUserHabilitado", payload: true })

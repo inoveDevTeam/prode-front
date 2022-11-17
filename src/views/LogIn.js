@@ -26,7 +26,7 @@ export default function LogIn() {
       .then((res) => {
         dispatch({ type: "setUser", payload: res.data });
         dispatch({ type: "setUserHabilitado", payload: true });
-        localStorage.setItem('userAgeRedBull', JSON.stringify(res.data))
+        localStorage.setItem('userProdeInove', JSON.stringify(res.data))
         navigate("/")
         window.location.reload()
       })
